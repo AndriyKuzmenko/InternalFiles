@@ -31,7 +31,7 @@
             android:inputType="textPersonName"
             android:textColor="#070F2B"
             android:textSize="25sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="Save"
@@ -73,7 +73,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="Reset"
@@ -90,7 +90,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="Exit"
