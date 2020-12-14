@@ -11,25 +11,26 @@ public class MainActivity extends AppCompatActivity
 {
     EditText eT;
     TextView tV;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         tV=(TextView)findViewById(R.id.tV);
         eT=(EditText)findViewById(R.id.eT);
     }
 
     public void save(View view)
     {
-        
+
     }
 
     public void reset(View view)
     {
-        
+        tV.setText("");
+        eT.setText("");
     }
 
     public void exit(View view)
