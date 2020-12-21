@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity
 
     public void reset(View view)
     {
-        tV.setText("");
         eT.setText("");
     }
 
