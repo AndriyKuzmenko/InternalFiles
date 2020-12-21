@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity
 {
     EditText eT;
     TextView tV;
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,23 +29,17 @@ public class MainActivity extends AppCompatActivity
         tV=(TextView)findViewById(R.id.tV);
         eT=(EditText)findViewById(R.id.eT);
 
+        text="";
+
         try
         {
 
             FileInputStream fis= openFileInput("test.txt");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
-            StringBuffer sb = new StringBuffer();
-            String line = br.readLine();
-            while (line != null)
-            {
-                sb.append(line+'\n');
-                line = br.readLine();
-            }
-            tV.setText(sb.toString());
+            text = br.readLine();
+            tV.setText(text);
             isr.close();
-
-
         }
         catch(Exception IO)
         {
@@ -54,13 +49,14 @@ public class MainActivity extends AppCompatActivity
 
     public void save(View view)
     {
-        tV.setText(tV.getText().toString()+eT.getText());
+        text+=eT.getText();
+        tV.setText(text);
         try
         {
             FileOutputStream fos = openFileOutput("test.txt", MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter bw = new BufferedWriter(osw);
-            bw.write(tV.getText().toString());
+            bw.write(text);
             bw.close();
         }
         catch(Exception IO)
