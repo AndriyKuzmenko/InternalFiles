@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * This method runs when either the save button or exit button is pressed.
+     * It saves the text in the save file.
+     * @param view - the button that was pressed
+     */
+
     public void save(View view)
     {
         text+=eT.getText();
@@ -66,11 +72,24 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * This method runs when the reset button is pressed. It deletes all the text in both the
+     * edit text and the text view, but for some reason not in the file. Don't ask me, I didn't
+     * create this task.
+     * @param view - the button that was pressed
+     */
+
     public void reset(View view)
     {
         eT.setText("");
         tV.setText("");
     }
+
+    /**
+     * This method runs when the exit button is pressed. It runs the save method and then
+     * finishes the activity.
+     * @param view - the button that was pressed
+     */
 
     public void exit(View view)
     {
