@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity
 
     public void save(View view)
     {
-
+        tV.setText(tV.getText().toString()+eT.getText());
     }
 
     public void reset(View view)
     {
         eT.setText("");
+        tV.setText("");
     }
 
     public void exit(View view)
