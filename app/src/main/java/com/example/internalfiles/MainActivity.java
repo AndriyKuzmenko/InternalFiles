@@ -2,7 +2,10 @@ package com.example.internalfiles;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -95,5 +98,34 @@ public class MainActivity extends AppCompatActivity
     {
         save(view);
         finish();
+    }
+
+    /**
+     * @param menu  - the menu
+     * @return      creates a menu with one option - cresits
+     */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add("Credits");
+
+        return true;
+    }
+
+    /**
+     *
+     * @param item - the item that was selected
+     * @return     After the user pressed on the credits option, this method
+     *             starts CreditsActivity
+     */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Intent si=new Intent(this, CreditsActivity.class);
+        startActivity(si);
+
+        return true;
     }
 }
