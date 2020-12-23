@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * @param menu  - the menu
-     * @return      creates a menu with one option - cresits
+     * @return      creates a menu with two options - credits and main activity
      */
 
     @Override
