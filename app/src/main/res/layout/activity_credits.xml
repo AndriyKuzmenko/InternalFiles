@@ -37,24 +37,6 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="2"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:onClick="back"
-            android:text="Back"
-            android:textAllCaps="false"
-            android:textColor="#0C092C"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
             android:layout_weight="2" />
     </LinearLayout>
 
