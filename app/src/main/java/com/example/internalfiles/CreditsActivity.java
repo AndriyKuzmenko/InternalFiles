@@ -40,7 +40,7 @@ public class CreditsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (item.getItemId()==R.id.menuCredits)
+        if (item.getItemId()==R.id.menuMain)
         {
             finish();
         }
