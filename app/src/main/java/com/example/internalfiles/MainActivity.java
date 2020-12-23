@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        menu.add("Credits");
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
@@ -123,8 +123,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        Intent si=new Intent(this, CreditsActivity.class);
-        startActivity(si);
+        if (item.getItemId()==R.id.menuCredits)
+        {
+            Intent si = new Intent(this, CreditsActivity.class);
+            startActivity(si);
+        }
 
         return true;
     }
