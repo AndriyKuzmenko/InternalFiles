@@ -1,27 +1,19 @@
-package com.example.internalfiles;
+package com.example.sharedpreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 public class MainActivity extends AppCompatActivity
 {
-    EditText eT;
-    TextView tV;
-    String text;
+    int i;
+    EditText nameET, numberET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,80 +21,75 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tV=(TextView)findViewById(R.id.tV);
-        eT=(EditText)findViewById(R.id.eT);
-
-        text="";
-
-        try
-        {
-
-            FileInputStream fis= openFileInput("test.txt");
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-            text = br.readLine();
-            tV.setText(text);
-            isr.close();
-        }
-        catch(Exception IO)
-        {
-
-        }
+        numberET=(EditText)findViewById(R.id.numberET);
+        nameET=(EditText)findViewById(R.id.nameET);
+        readFile();
     }
 
     /**
-     * This method runs when either the save button or exit button is pressed.
-     * It saves the text in the save file.
-     * @param view - the button that was pressed
+     * This method runs when the count button is pressed. it increases i
+     * by 1.
+     * @param view
      */
 
-    public void save(View view)
+    public void count(View view)
     {
-        text+=eT.getText();
-        tV.setText(text);
-        try
-        {
-            FileOutputStream fos = openFileOutput("test.txt", MODE_PRIVATE);
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
-            BufferedWriter bw = new BufferedWriter(osw);
-            bw.write(text);
-            bw.close();
-        }
-        catch(Exception IO)
-        {
-
-        }
-
+        i++;
+        numberET.setText(i+"");
     }
 
     /**
-     * This method runs when the reset button is pressed. It deletes all the text in both the
-     * edit text and the text view, but for some reason not in the file. Don't ask me, I didn't
-     * create this task.
-     * @param view - the button that was pressed
+     * This method runs when the reset button is pressed. It resets the
+     * value of i.
+     * @param view
      */
 
     public void reset(View view)
     {
-        eT.setText("");
-        tV.setText("");
+        i=0;
+        numberET.setText(i+"");
     }
 
     /**
-     * This method runs when the exit button is pressed. It runs the save method and then
-     * finishes the activity.
-     * @param view - the button that was pressed
+     * This method runs when the exit button is pressed. It saves the data and exits
+     * from the app.
+     * @param view
      */
 
     public void exit(View view)
     {
-        save(view);
+        SharedPreferences settings=getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
+        SharedPreferences.Editor editor=settings.edit();
+        editor.putString("name",nameET.getText().toString());
+        editor.putInt("i",i);
+        editor.commit();
         finish();
     }
 
     /**
+     * This method runs when the program starts. It reads the data from the file.
+     *
+     * @Param
+     */
+
+    public void readFile()
+    {
+        try
+        {
+            SharedPreferences settings = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+            nameET.setText(settings.getString("name", ""));
+            i = settings.getInt("i", 0);
+        }
+        catch(Exception IO)
+        {
+            i=0;
+        }
+        numberET.setText(""+i);
+    }
+
+    /**
      * @param menu  - the menu
-     * @return      creates a menu with two options - credits and main activity
+     * @return      creates a menu with one option - cresits
      */
 
     @Override
